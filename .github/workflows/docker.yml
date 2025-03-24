@@ -37,4 +37,5 @@ jobs:
            docker compose -f random_forest_dockerized/docker-compose.yml logs  # Display logs to confirm success
 
       - name: Clean Up
-        run: docker compose down
+        run: docker compose -f random_forest_dockerized/docker-compose.yml down
+
