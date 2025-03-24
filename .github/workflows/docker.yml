@@ -3,9 +3,8 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:  # Allows manual triggering
-
+      - main        # Auto-build on push to main
+  
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
