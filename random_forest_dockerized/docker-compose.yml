@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_with_redis
+    #image: 'm4salemcc/att-docker-repo:latest'
     ports:
       - "5000:5000"
     restart: always
