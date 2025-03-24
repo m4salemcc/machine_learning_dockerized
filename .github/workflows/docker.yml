@@ -35,7 +35,7 @@ jobs:
         run: |
           docker compose -f random_forest_dockerized/docker-compose.yml up -d
           sleep 10  # Allow some time for services to initialize
-          docker compose logs  # Display logs to confirm success
+           docker compose -f random_forest_dockerized/docker-compose.yml logs  # Display logs to confirm success
 
       - name: Clean Up
         run: docker compose down
