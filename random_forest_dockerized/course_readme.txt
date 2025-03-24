@@ -10,3 +10,8 @@ docker push m4salemcc/att-docker-repo:latest
 docker pull m4salemcc/att-docker-repo:latest
 
 #modify the docker compose file to run from registry
+
+
+#for the github actions, you need to setup your creds in github 
+# Settings → Secrets and Variables → Actions → New repository secret
+
