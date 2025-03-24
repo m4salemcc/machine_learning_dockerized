@@ -1,4 +1,4 @@
-FROM continuumio/anaconda3:4.4.0
+FROM python:3.9-slim
 MAINTAINER aish, aish.prabhat@shopee.com
 COPY . random_forest_dockerized/
 EXPOSE 5000

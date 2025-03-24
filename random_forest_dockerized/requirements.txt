@@ -1,3 +1,9 @@
+scikit-learn
 flask
 flasgger
 redis
+numpy
+pandas
+redis
+matplotlib
+ 

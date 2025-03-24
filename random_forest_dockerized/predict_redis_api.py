@@ -5,12 +5,8 @@ import numpy as np
 import pandas as pd
 import redis
 
-with open('iris_model.pkl', 'rb') as model_file:
-    model = pickle.load(model_file)
-
 app = Flask(__name__)
 swagger = Swagger(app)
-
 
 redis_host = "redis-server"
 redis_port = 6379
@@ -71,9 +67,16 @@ def predict_iris_file():
         type: file
         required: true
     """
+    print("loding file")
     input_data = pd.read_csv(request.files.get("input_file"), header=None)
+    print("Predicting whole file!")
     prediction = model.predict(input_data)
     return str(list(prediction))
 
 if __name__ == '__main__':
+    with open('iris_model.pkl', 'rb') as model_file:
+      print("loading model file")
+      model = pickle.load(model_file)
+      print("Model Loaded")
+    print("Starting Flask Server")
     app.run(host='0.0.0.0', port=5000)
