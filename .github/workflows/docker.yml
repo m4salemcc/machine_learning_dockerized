@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main  # Trigger workflow on push to main branch
+      - main
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
@@ -25,15 +25,15 @@ jobs:
 
       - name: Build the Docker Image
         run: |
-          docker build -f Dockerfile_with_redis \
-            -t m4salemcc/att-docker-repo:latest .
+          docker build -f random_forest_dockerized/Dockerfile_with_redis \
+            -t m4salemcc/att-docker-repo:latest random_forest_dockerized
 
       - name: Push the Docker Image
         run: docker push m4salemcc/att-docker-repo:latest
 
       - name: Run Docker Compose for Testing
         run: |
-          docker compose up -d
+          docker compose -f random_forest_dockerized/docker-compose.yml up -d
           sleep 10  # Allow some time for services to initialize
           docker logs flask-app  # Display logs to confirm success
 
