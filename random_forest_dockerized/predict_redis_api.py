@@ -66,10 +66,37 @@ def predict_iris_file():
         in: formData
         type: file
         required: true
+
+    responses:
+      200:
+        description: Indecies of predicted classes
     """
     print("loding file")
     input_data = pd.read_csv(request.files.get("input_file"), header=None)
     print("Predicting whole file!")
+    prediction = model.predict(input_data)
+    return str(list(prediction))
+
+@app.route('/predict_local_file')
+def predict_local_file():
+    """Example file endpoint returning a prediction of iris file from docker volume"
+    ---    
+    parameters:
+      - name: file_name
+        in: query
+        type: string
+        required: false
+
+    responses:
+      200:
+        description: Indecies of predicted classes
+    """
+
+    print("loading file")
+    # load the file from docker volume
+    input_data = pd.read_csv("/mnt/data/iris_data.csv", header=None)
+    print(input_data)
+    print("Predicting whole file from docker volume!")
     prediction = model.predict(input_data)
     return str(list(prediction))
 

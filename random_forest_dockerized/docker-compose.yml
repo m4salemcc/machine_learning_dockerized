@@ -9,3 +9,7 @@ services:
     ports:
       - "5000:5000"
     restart: always
+
+    #add volume to load the iris data to the /mnt/data folder
+    volumes:
+      - ./data:/mnt/data
